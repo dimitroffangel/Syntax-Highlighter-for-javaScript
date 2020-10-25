@@ -1,0 +1,75 @@
+/* scanner for a toy JavaScript-like language */
+
+%{
+/* need this for the call to atof() below */
+#include <math.h>
+#define YY_NO_UNISTD_H
+%}
+
+DIGIT    [0-9]
+ID       [a-zA-Z_$][a-zA-Z0-9_$]*
+STRQ     '([^\']|(\\\'))*'
+STRDQ    \"([^\"]|(\\\"))*\"
+
+%%
+
+'
+
+{DIGIT}+    {
+            printf( "An integer: %s (%d)\n", yytext,
+                    atoi( yytext ) );
+            }
+
+{DIGIT}*"."{DIGIT}*        {
+            printf( "A float: %s (%g)\n", yytext,
+                    atof( yytext ) );
+            }
+
+"["((({DIGIT}+|{DIGIT}*"."{DIGIT}*)",")*|(({DIGIT}+|{DIGIT}*"."{DIGIT}*)",")*({DIGIT}+|{DIGIT}*"."{DIGIT}*))"]" {
+	printf( "An array %s \n", yytext);
+	}
+
+
+break|case|catch|class|const|continue|debugger|default|delete|do|else|export|extends|finally|for|function|if|import|in|instanceof|new|return|super|switch|this|throw|try|typeof|var|void|while|with|yield|private {
+    printf( "A keyword: %s\n", yytext );
+}
+
+{ID}        printf( "An identifier: %s\n", yytext );
+{STRQ}|{STRDQ}        printf( "A string: %s\n", yytext );
+
+"."|"+"|"-"|"*"|"/"|"="|"!"|">"|"<"|"!=="|"==="|">="|"<="|"++"|"--"|"=>"   printf( "An operator: %s\n", yytext );
+
+";"   printf( "A semicolumn\n" );
+"("   printf( "A left parenthesis\n" );
+")"   printf( "A right parenthesis\n" );
+"{"   printf( "A left bracket\n" );
+"}"   printf( "A right bracket\n" );
+":"   printf( "A colon\n" );
+"?"   printf( "A question mark\n" );
+
+[ \t\n]+          /* eat up whitespace */
+
+.           printf( "Unrecognized character: %s\n", yytext );
+
+%%
+
+int yywrap()
+{
+    return 1;
+}
+
+
+int main(int argc, const char* argv[])
+{
+    ++argv, --argc;  /* skip over program name */
+    if ( argc > 0 )
+            yyin = fopen( argv[0], "r" );
+    else
+            yyin = stdin;
+
+    /* YY_BUFFER_STATE hello = yy_scan_string("(x)=>{ return x !== 1; }"); */
+    /* yypush_buffer_state(hello); */
+    yylex();
+    /* yy_delete_buffer(hello); */
+    return 0;
+}
