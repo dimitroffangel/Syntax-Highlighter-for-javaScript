@@ -8,7 +8,13 @@ DIGIT    [0-9]
 ID       [a-zA-Z_$][a-zA-Z0-9_$]*
 STRQ     '([^\'\n]|(\\\'))*'
 STRDQ    \"([^\"\n]|(\\\"))*\"
+
 %%	
+
+"/*"([^*]|[\n]|(\*+([^*/]|[\n])))*([*]+)"/" {
+	printf("multi line comment %s\n", yytext);
+	fprintf(yyout, "<span class=\"multi-line-comment\">%s</span>", yytext);
+}
 
 {DIGIT}+    {
 			printf("Integer: %s\n", yytext);
@@ -31,10 +37,7 @@ STRDQ    \"([^\"\n]|(\\\"))*\"
 }
 
 
-"/*"[^*/|\n]*"*/" {
-	printf("multi line comment %s\n", yytext);
-	fprintf(yyout, "<span class=\"multi-line-comment\">%s</span>", yytext);
-}
+
 
 break|case|catch|class|const|continue|debugger|default|delete|do|else|export|extends|finally|for|function|if|import|in|instanceof|new|return|super|switch|this|throw|try|typeof|var|void|while|with|yield|private {
 	printf( "Keyword: %s\n", yytext );

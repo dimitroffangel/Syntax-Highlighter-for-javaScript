@@ -25,15 +25,15 @@
 </head>
 <body>
     <pre class="code">
-
-<span class="operator">/</span><span class="operator">*</span><span class="keyword">this</span> <span class="identifier">is</span> <span class="identifier">a</span> <span class="identifier">testing</span><span class="operator">*</span><span class="operator">/</span>
-	<span class="operator">/</span><span class="operator">*</span><span class="identifier">comment</span>
-	<span class="identifier">on</span>
-	<span class="identifier">more</span> <span class="identifier">than</span>
-	<span class="identifier">one</span> <span class="identifier">line</span> <span class="identifier">some</span> <span class="identifier">text</span> <span class="identifier">on</span> <span class="identifier">it</span>
-	<span class="identifier">citation</span>
-	<span class="identifier">xD</span>
-	<span class="operator">*</span><span class="operator">/</span>
+<span class="one-line-comment">// "Asdasdasd "</span>
+<span class="multi-line-comment">/* this is a testing*/</span>
+	<span class="multi-line-comment">/*comment
+	on
+	more 'than'
+	one "line some text" *on it
+	citation
+	xD*********/
+	*/</span>
 
 <span class="keyword">var</span> <span class="identifier">fs</span> <span class="operator">=</span> <span class="identifier">require</span>(<span class="string">'fs'</span>),
     <span class="identifier">http</span> <span class="operator">=</span> <span class="identifier">require</span>(<span class="string">'http'</span>),
@@ -546,11 +546,11 @@
                 <span class="identifier">enemyData</span> <span class="operator">=</span> <span class="number">2</span>;
                 
             <span class="identifier">currentGame</span>[<span class="identifier">updateIndex</span>]<span class="number">.</span><span class="identifier">updateCounter</span><span class="operator">++</span>;            
-       <span class="operator">/</span><span class="operator">*</span>     <span class="identifier">currentGame</span>[<span class="identifier">enemyData</span>]<span class="number">.</span><span class="identifier">socket</span><span class="number">.</span><span class="identifier">emit</span>(<span class="string">'enemyCardEffect'</span>, {
-                                <span class="identifier">onField</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">onField</span>,
-                                 <span class="identifier">onIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">onIndex</span>,  <span class="identifier">cardCan</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">cardCan</span>,
-                                <span class="identifier">changingFieldIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">changingFieldIndex</span>});     
-       <span class="operator">*</span><span class="operator">/</span>});
+       <span class="multi-line-comment">/*     currentGame[enemyData].socket.emit('enemyCardEffect', {
+                                onField:currentGame[boonIndex].onField,
+                                 onIndex:currentGame[boonIndex].onIndex,  cardCan:currentGame[boonIndex].cardCan,
+                                changingFieldIndex:currentGame[boonIndex].changingFieldIndex});     
+       */</span>});
 
         <span class="identifier">socket</span><span class="number">.</span><span class="identifier">on</span>(<span class="string">'uniqActions'</span>, <span class="keyword">function</span>(<span class="identifier">data</span>){
             <span class="keyword">var</span> <span class="identifier">currentGame</span> <span class="operator">=</span> <span class="identifier">inGame</span>[<span class="identifier">data</span><span class="number">.</span><span class="identifier">gameOrder</span>];
@@ -580,13 +580,13 @@
 
                 <span class="identifier">socket</span><span class="number">.</span><span class="identifier">emit</span>(<span class="string">'battleReport'</span><span class="operator">+</span><span class="identifier">currentGame</span>[<span class="identifier">data</span><span class="number">.</span><span class="identifier">playerIndex</span>], {<span class="identifier">enemyFields</span>:<span class="identifier">playerData</span><span class="number">.</span><span class="identifier">playerFields</span>,
                     <span class="identifier">shandIndex</span>:<span class="identifier">playerData</span><span class="number">.</span><span class="identifier">handIndex</span>,
-                    <span class="identifier">fieldIndex</span>:<span class="identifier">playerData</span><span class="number">.</span><span class="identifier">fieldIndex</span>, <span class="identifier">cardName</span>:<span class="identifier">playerData</span><span class="number">.</span><span class="identifier">cardName</span>, <span class="operator">/</span><span class="operator">*</span><span class="operator"><</span><span class="operator">-</span><span class="identifier">spawnCard</span><span class="operator">*</span><span class="operator">/</span>
+                    <span class="identifier">fieldIndex</span>:<span class="identifier">playerData</span><span class="number">.</span><span class="identifier">fieldIndex</span>, <span class="identifier">cardName</span>:<span class="identifier">playerData</span><span class="number">.</span><span class="identifier">cardName</span>, <span class="multi-line-comment">/*<-spawnCard*/</span>
                 <span class="identifier">defenderIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">battleIndex</span>]<span class="number">.</span><span class="identifier">defenderIndex</span>, <span class="identifier">attackerIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">battleIndex</span>]<span class="number">.</span><span class="identifier">attackerIndex</span>,
-                <span class="identifier">defenderField</span>:<span class="identifier">currentGame</span>[<span class="identifier">battleIndex</span>]<span class="number">.</span><span class="identifier">defenderField</span>, <span class="operator">/</span><span class="operator">*</span><span class="operator"><</span><span class="operator">-</span><span class="identifier">battle</span><span class="operator">*</span><span class="operator">/</span> <span class="identifier">markedCursor</span>:<span class="identifier">currentGame</span>[<span class="identifier">castIndex</span>]<span class="number">.</span><span class="identifier">markedCursor</span>,
+                <span class="identifier">defenderField</span>:<span class="identifier">currentGame</span>[<span class="identifier">battleIndex</span>]<span class="number">.</span><span class="identifier">defenderField</span>, <span class="multi-line-comment">/*<-battle*/</span> <span class="identifier">markedCursor</span>:<span class="identifier">currentGame</span>[<span class="identifier">castIndex</span>]<span class="number">.</span><span class="identifier">markedCursor</span>,
                 <span class="identifier">character</span>:<span class="identifier">currentGame</span>[<span class="identifier">castIndex</span>]<span class="number">.</span><span class="identifier">character</span>, <span class="identifier">cursorPosition</span>:<span class="identifier">currentGame</span>[<span class="identifier">castIndex</span>]<span class="number">.</span><span class="identifier">cursorPosition</span>, 
-                <span class="identifier">spellIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">castIndex</span>]<span class="number">.</span><span class="identifier">spellIndex</span>, <span class="operator">/</span><span class="operator">*</span><span class="operator"><</span><span class="operator">-</span><span class="identifier">spellCast</span><span class="operator">*</span><span class="operator">/</span> <span class="identifier">cardCan</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">cardCan</span>,
+                <span class="identifier">spellIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">castIndex</span>]<span class="number">.</span><span class="identifier">spellIndex</span>, <span class="multi-line-comment">/*<-spellCast*/</span> <span class="identifier">cardCan</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">cardCan</span>,
                 <span class="identifier">onField</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">onField</span>, <span class="identifier">onIndex</span>: <span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">onIndex</span>, 
-                <span class="identifier">changingFieldIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">changingFieldIndex</span>, <span class="operator">/</span><span class="operator">*</span><span class="identifier">updateCounter</span><span class="operator">-</span><span class="operator">></span><span class="operator">*</span><span class="operator">/</span>
+                <span class="identifier">changingFieldIndex</span>:<span class="identifier">currentGame</span>[<span class="identifier">boonIndex</span>]<span class="number">.</span><span class="identifier">changingFieldIndex</span>, <span class="multi-line-comment">/*updateCounter->*/</span>
                  <span class="identifier">updateCounter</span>:<span class="identifier">currentGame</span>[<span class="identifier">updateIndex</span>]<span class="number">.</span><span class="identifier">updateCounter</span>
                 }, <span class="keyword">function</span>(<span class="identifier">data</span>){
                     <span class="identifier">data</span><span class="number">.</span><span class="identifier">enemyFields</span> <span class="operator">=</span> [<span class="string">''</span>,<span class="string">''</span>,<span class="string">''</span>,<span class="string">''</span>,<span class="string">''</span>,<span class="string">''</span>];

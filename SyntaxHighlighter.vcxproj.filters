@@ -18,4 +18,9 @@
     <Flex Include="javaScript2html.l" />
     <Flex Include="demo.l" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="demo.flex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

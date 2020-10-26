@@ -1,11 +1,11 @@
-
-/*this is a testing*/
+// "Asdasdasd "
+/* this is a testing*/
 	/*comment
 	on
-	more than
-	one line some text on it
+	more 'than'
+	one "line some text" *on it
 	citation
-	xD
+	xD*********/
 	*/
 
 var fs = require('fs'),

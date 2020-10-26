@@ -128,6 +128,9 @@
     <Flex Include="demo.l" />
     <Flex Include="javaScript2html.l" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="demo.flex.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(ProgramFiles)\Flex_With_Bison\custom_build_rules\win_flex_bison_custom_build.targets" />
